@@ -27,15 +27,12 @@ HAVING COUNT(*) > 1
 
 -- 7. Mostrar el número de vuelos por modelo de avión.
 
-SELECT airplanes_data.model, COUNT(*) FROM segments
-JOIN flights
-  ON segments.flight_id = flights.flight_id
+SELECT airplanes_data.model, COUNT(*) FROM flights
 JOIN routes
   ON flights.route_no = routes.route_no
 JOIN airplanes_data
   ON routes.airplane_code = airplanes_data.airplane_code
 GROUP BY airplanes_data.model;
--- No sé si es que me he liado yo sola, o si la versión "lite" no tenía la fk referenciada correctamente, lo he comprobado con la IA y aunque haya quedado raroy bastante largo, dice que así está bien 
 
 -- 8. Reservas con más de un billete (varios pasajeros).
 
